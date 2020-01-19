@@ -22,8 +22,8 @@ def ask_yes_no(question):
 
 
 # Основная часть
-display("Вам сообщение\n")
+display("Вам сообщение")
 number = give_me_five()
 print("Вот что возвратила функция give_me_five():", number)
-answer = ask_yes_no("\nПожалуйста, введите 'y' или 'n': ")
+answer = ask_yes_no("Пожалуйста, введите 'y' или 'n': ")
 print("Спасибо, что ввели", answer)
