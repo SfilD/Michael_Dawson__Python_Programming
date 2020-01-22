@@ -66,9 +66,9 @@ def display_board(board):
     """Отображает игровую доску на экране"""
     print("\n\t", board[0], "|", board[1], "|", board[2])
     print("\t", "---------")
-    print("\n\t", board[3], "|", board[4], "|", board[5])
+    print("\t", board[3], "|", board[4], "|", board[5])
     print("\t", "---------")
-    print("\n\t", board[6], "|", board[7], "|", board[8], "\n")
+    print("\t", board[6], "|", board[7], "|", board[8], "\n")
 
 
 def legal_moves(board):
@@ -82,13 +82,23 @@ def legal_moves(board):
 
 def winner(board):
     """Определяет победителя в игре"""
-    WAYS_TO_WIN = (0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
+    WAYS_TO_WIN = ((0, 1, 2),
+                   (3, 4, 5),
+                   (6, 7, 8),
+                   (0, 3, 6),
+                   (1, 4, 7),
+                   (2, 5, 8),
+                   (0, 4, 8),
+                   (2, 4, 6))
+
     for row in WAYS_TO_WIN:
         if board[row[0]] == board[row[1]] == board[row[2]] != EMPTY:
             winner = board[row[0]]
             return winner
-        if EMPTY not in board:
-            return TIE
+
+    if EMPTY not in board:
+        return TIE
+
     return None
 
 
@@ -97,7 +107,7 @@ def human_move(board, human):
     legal = legal_moves(board)
     move = None
     while move not in legal:
-        move = ask_number("Твой ход. Выбери одно из полей (0 - 8):", 0, NUM_SQUARES)
+        move = ask_number("Твой ход. Выбери одно из полей (0 - 8): ", 0, NUM_SQUARES)
         if move not in legal:
             print("Смешной человек! Это поле уже занято, выбери другое")
     print("Ладно...")
@@ -110,7 +120,9 @@ def computer_move(board, computer, human):
     board = board[:]
     # поля от лучшего к худшему
     BEST_MOVES = (4, 0, 2, 6, 8, 1, 3, 5, 7)
+
     print("Я выберу поле номер", end=" ")
+
     for move in legal_moves((board)):
         board[move] = computer
         # если следующим ходом может победить компьютер, выберем этот ход
@@ -119,19 +131,22 @@ def computer_move(board, computer, human):
             return move
         # выполнив проверку, отменим внесённые изменения
         board[move] = EMPTY
+
     for move in legal_moves(board):
         board[move] = human
-    # если следующим ходом может победить человек, блокируем этот ход
+        # если следующим ходом может победить человек, блокируем этот ход
         if winner(board) == human:
             print(move)
             return move
     # выполнив проверку, отменим внесённые изменения
         board[move] = EMPTY
+
     # поскольку следующим ходом ни одна сторона не может победить
     # выберем лучшее из доступных полей
     for move in BEST_MOVES:
         if move in legal_moves(board):
             print(move)
+            return move
 
 
 def next_turn(turn):
@@ -142,9 +157,46 @@ def next_turn(turn):
         return X
 
 
-def congrat_winner(the_winner, human):
+def congrat_winner(the_winner, computer, human):
     """Поздравляет победителя игры"""
     if the_winner != TIE:
         print("Три", the_winner, "в ряд!\n")
     else:
         print("Ничья!\n")
+
+    if the_winner == computer:
+        print("Как я и предсказывал, победа в очередной раз осталась за мной.\n" \
+              "Вот ещё один довод в пользу того, что компьютеры превосходят людей решительно во всём.")
+
+    elif the_winner == human:
+        print("О нет, этого не может быть! Неужели ты как-то сумел перехитрить меня, белковый?\n" \
+              "Клянусь, я - компьютер, не допущу этого больше никогда!")
+
+    elif the_winner == TIE:
+        print("Тебе несказанно повезло, дружок: ты сумел свести игру вничью.\n" \
+              "Радуйся же сегодняшнему успеху! Завтра тебе уже не суждено его повторить.")
+
+
+def main():
+    display_instruct()
+    computer, human = pieces()
+    turn = X
+    board = new_board()
+    display_board(board)
+
+    while not winner(board):
+        if turn == human:
+            move = human_move(board, human)
+            board[move] = human
+        else:
+            move = computer_move(board, computer, human)
+            board[move] = computer
+        display_board(board)
+        turn = next_turn(turn)
+
+    the_winner = winner(board)
+    congrat_winner(the_winner, computer, human)
+
+
+# Запуск программы
+main()
