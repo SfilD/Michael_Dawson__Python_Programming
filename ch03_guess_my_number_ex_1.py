@@ -27,6 +27,6 @@ while True:
         first_num = guess
     elif guess == number:
         print("Вам удалось отгадать число! Это в самом деле %d." % number)
-        print("вы затратили на отгадывание всего лишь %d попыток." % tries)
+        print("Вы затратили на отгадывание всего лишь %d попыток." % tries)
         break
     tries += 1
