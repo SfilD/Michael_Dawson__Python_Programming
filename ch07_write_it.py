@@ -19,3 +19,10 @@ text_file.close()
 print("Создаю текстовый файл методом writelines().")
 text_file = open("ch07_write_it.txt", "w", encoding='utf-8')
 lines = ["Строка 1\n", "Это строка 2\n", "Этой строке достался номер 3\n"]
+text_file.writelines(lines)
+text_file.close()
+
+print("Читаю вновь созданный файл.")
+text_file = open("ch07_write_it.txt", "r", encoding='utf-8')
+print(text_file.read())
+text_file.close()
