@@ -59,7 +59,6 @@ def main():
         for i in inp.readlines():
             key, val = i.strip().split(':')
             names_and_scores[key] = val
-
     inp.close()
 
     name = input("Введите ваше имя: ")
@@ -89,12 +88,12 @@ def main():
 
         else:
             print("Нет.", end=" ")
+
         print(explanation)
         print("Счёт:", score)
 
         # переход к следующему вопросу
         category, question, answers, correct, points, explanation = next_block(trivia_file)
-
     trivia_file.close()
 
     print("Это был последний вопрос!")

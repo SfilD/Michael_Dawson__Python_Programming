@@ -1,3 +1,3 @@
-Sergey:2
-Darrin:7
-Oxana:3
+Sergey:42
+Darrin:42
+Oxana:42
