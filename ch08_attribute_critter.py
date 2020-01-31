@@ -16,7 +16,7 @@ class Critter(object):
         return rep
 
     def talk(self):
-        print("Привет! Меня зовут", self.name)
+        print("Привет! Меня зовут ", self.name, ".", sep="")
 
 
 # Основная часть
@@ -26,7 +26,10 @@ crit1.talk()
 crit2 = Critter("Мурзик")
 crit2.talk()
 
-print("Вывод объекта crit1 на экран:")
-print(crit1)
-print("Непосредственный доступ к атрибуту crit1.name:")
-print(crit1.name)
+crit3 = Critter("Соня")
+crit3.talk()
+
+print("Вывод объекта crit3 на экран:")
+print(crit3)
+print("Непосредственный доступ к атрибуту crit3.name:")
+print(crit3.name)
