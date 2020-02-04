@@ -12,14 +12,12 @@ class Critter(object):
         self.name = name    # открытый атрибут
         self.__mood = mood  # закрытый атрибут
 
-
     def talk(self):
         print("Меня зовут", self.name)
         print("Сейчас я чувствую себя", self.__mood)
 
     def __private_method(self):
         print("Это закрытый метод")
-
 
     def public_method(self):
         print("Это открытый метод")
@@ -30,3 +28,6 @@ class Critter(object):
 crit = Critter(name="Бобик", mood="прекрасно")
 crit.talk()
 crit.public_method()
+
+print()
+crit._Critter__private_method()
