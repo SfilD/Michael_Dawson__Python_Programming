@@ -11,6 +11,13 @@ class Critter(object):
         self.hunger = hunger # голод
         self.boredom = boredom # уныние
 
+    def __str__(self):
+        rep = "Объект класса Critter\n"
+        rep += "Имя объекта: " + self.name + "\n"
+        rep += "Уровень голода: " + str(self.hunger) + "\n"
+        rep += "Уровень уныния: " + str(self.boredom) + "\n"
+        return rep
+
     def __pass_time(self):
         self.hunger += 1
         self.boredom += 1
@@ -34,18 +41,16 @@ class Critter(object):
 
     def eat(self, food = 4):
         print("Мррр... Спасибо!")
-        print("self.hunger =", self.hunger, "food =", food)
         self.hunger -= food
         if self.hunger < 0:
-            self.hunger = 0
+            self.hunger = -1
         self.__pass_time()
 
     def play(self, fun = 4):
         print("Уиии!")
-        print("self.boredom =", self.boredom, "fun =", fun)
         self.boredom -= fun
         if self.boredom < 0:
-            self.boredom = 0
+            self.boredom = -1
         self.__pass_time()
 
 
@@ -108,6 +113,10 @@ def main():
                 elif play_choice == "1" or play_choice == "2" or play_choice == "3" or play_choice == "4":
                     crit.play(int(play_choice))
                     play_choice = "0"
+
+        # вывод служебной информации об объекте
+        elif choice == "21":
+            print(crit)
 
         # непонятный пользовательский ввод
         else:
