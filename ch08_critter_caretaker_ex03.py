@@ -77,7 +77,7 @@ def main():
             print("До свидания")
         # беседа со зверюшкой
         elif choice == "1":
-            crit.talk()
+            crit[0].talk()
         # кормление зверюшки
         elif choice == "2":
             eat_choice = None
@@ -95,7 +95,7 @@ def main():
                     print("Передумал кормить зверюшку")
                 # выбор еды
                 elif eat_choice == "1" or eat_choice == "2" or eat_choice == "3" or eat_choice == "4":
-                    crit.eat(int(eat_choice))
+                    crit[0].eat(int(eat_choice))
                     eat_choice = "0"
 
         # игра со зверюшкой
@@ -115,12 +115,12 @@ def main():
                     print("Передумал играть со зверюшкой")
                 # выбор игры
                 elif play_choice == "1" or play_choice == "2" or play_choice == "3" or play_choice == "4":
-                    crit.play(int(play_choice))
+                    crit[0].play(int(play_choice))
                     play_choice = "0"
 
         # вывод служебной информации об объекте
         elif choice == "21":
-            print(crit)
+            print(crit[0])
 
         # непонятный пользовательский ввод
         else:
