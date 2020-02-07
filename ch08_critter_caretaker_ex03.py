@@ -56,71 +56,44 @@ class Critter(object):
 
 def main():
     import random
-    crit_name = ["Sonya", "Murrr'ka"]
+    crit_name = ["Sonya", "Murrr'ka", "Vasssiliy"]
+    crit_len = len(crit_name)
     crit = []
-    print(crit_name[0], type(crit_name[0]))
-    crit.append(Critter(crit_name[0]))
-    print(crit[0])
+    span = 6 # диапазон кормления/игры от 0 до span исключительно
+    for i in range(crit_len):
+        crit.append(Critter(crit_name[i]))
 
     choice = None
     while choice != "0":
         print \
         ("""
-Моя зверюшка
+Мои зверюшки
 0 - Выйти
-1 - Узнать о самочувствии зверюшки
-2 - Покормить зверюшку
-3 - Поиграть со зверюшкой""")
+1 - Узнать о самочувствии зверюшек
+2 - Покормить зверюшек
+3 - Поиграть со зверюшками""")
         choice = input("Ваш выбор: ")
         # выход
         if choice == "0":
             print("До свидания")
-        # беседа со зверюшкой
+        # беседа со зверюшками
         elif choice == "1":
-            crit[0].talk()
-        # кормление зверюшки
+            for i in range(crit_len):
+                crit[i].talk()
+        # кормление зверюшек
         elif choice == "2":
-            eat_choice = None
-            while eat_choice != "0":
-                print \
-                ("""
-0 - Выйти
-1 - Еда на 1 балл
-2 - Еда на 2 балла
-3 - Еда на 3 балла
-4 - Еда на 4 балла""")
-                eat_choice = input("Выберите еду для зверюшки: ")
-                # выход
-                if eat_choice == "0":
-                    print("Передумал кормить зверюшку")
-                # выбор еды
-                elif eat_choice == "1" or eat_choice == "2" or eat_choice == "3" or eat_choice == "4":
-                    crit[0].eat(int(eat_choice))
-                    eat_choice = "0"
+            for i in range(crit_len):
+                crit[i].eat(random.randrange(span))
 
-        # игра со зверюшкой
+        # игра со зверюшками
         elif choice == "3":
-            play_choice = None
-            while play_choice != "0":
-                print \
-                    ("""
-0 - Выйти
-1 - Игра на 1 минуту
-2 - Игра на 2 минуты
-3 - Игра на 3 минуты
-4 - Игра на 4 минуты""")
-                play_choice = input("Выберите игру для зверюшки: ")
-                # выход
-                if play_choice == "0":
-                    print("Передумал играть со зверюшкой")
-                # выбор игры
-                elif play_choice == "1" or play_choice == "2" or play_choice == "3" or play_choice == "4":
-                    crit[0].play(int(play_choice))
-                    play_choice = "0"
+            for i in range(crit_len):
+                crit[i].play(random.randrange(span))
 
         # вывод служебной информации об объекте
         elif choice == "21":
-            print(crit[0])
+            for i in range(crit_len):
+                print(crit[i])
 
         # непонятный пользовательский ввод
         else:
