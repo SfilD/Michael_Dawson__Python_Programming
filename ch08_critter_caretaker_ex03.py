@@ -56,13 +56,11 @@ class Critter(object):
 
 def main():
     import random
-    critt_name = ["Соня", "Мурка"]
-    critt = []
-    for i in critt_name:
-        critt[critt_name.index(i)] = Critter(i)
-
-    crit_name = input("Как вы назовёте свою зверюшку? ")
-    crit = Critter(crit_name)
+    crit_name = ["Sonya", "Murrr'ka"]
+    crit = []
+    print(crit_name[0], type(crit_name[0]))
+    crit.append(Critter(crit_name[0]))
+    print(crit[0])
 
     choice = None
     while choice != "0":
