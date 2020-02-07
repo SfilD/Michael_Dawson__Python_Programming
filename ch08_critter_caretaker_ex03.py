@@ -39,14 +39,14 @@ class Critter(object):
         print("Меня зовут", self.name, "и сейчас я чувствую себя", self.mood)
         self.__pass_time()
 
-    def eat(self, food = 4):
+    def eat(self, food):
         print("Мррр... Спасибо!")
         self.hunger -= food
         if self.hunger < 0:
             self.hunger = -1
         self.__pass_time()
 
-    def play(self, fun = 4):
+    def play(self, fun):
         print("Уиии!")
         self.boredom -= fun
         if self.boredom < 0:
@@ -55,6 +55,12 @@ class Critter(object):
 
 
 def main():
+    import random
+    critt_name = ["Соня", "Мурка"]
+    critt = []
+    for i in critt_name:
+        critt[critt_name.index(i)] = Critter(i)
+
     crit_name = input("Как вы назовёте свою зверюшку? ")
     crit = Critter(crit_name)
 
