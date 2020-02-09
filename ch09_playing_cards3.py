@@ -35,3 +35,27 @@ class Positionable_Card(Card):
         else:
             rep = "XX"
         return rep
+
+    def flip(self):
+        self.is_face_up = not self.is_face_up
+
+
+# Основная часть
+card1 = Card("Т", "к")
+card2 = Unprintable_Card("Т", "б")
+card3 = Positionable_Card("Т", "ч")
+
+print("Печатаю объект Card:")
+print(card1)
+
+print("Печатаю объект Unprintable_Card:")
+print(card2)
+
+print("Печатаю объект Positionable_Card:")
+print(card3)
+
+print("Переворачиваю объект Positionable_Card:")
+card3.flip()
+
+print("Печатаю объект Positionable_Card:")
+print(card3)
