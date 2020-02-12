@@ -6,7 +6,6 @@
 
 class Critter(object):
     """Виртуальный питомец"""
-
     def __init__(self, name, mood):
         print("Появилась на свет новая зверюшка!")
         self.name = name    # открытый атрибут
