@@ -9,7 +9,7 @@ print("Добро пожаловать в самую простую игру!")
 again = None
 while again != "n":
     players = []
-    num = ch09_games.ask_number(question="Сколько игроков участвует? (2 - 5): ", low=2, high=5)
+    num = ch09_games.ask_number(question="Сколько игроков участвует? (2 - 5): ", low=2, high=6)
 
     for i in range(num):
         name = input("Имя игрока: ")
@@ -18,7 +18,7 @@ while again != "n":
         players.append(player)
 
     print("Вот результаты игры:")
-    for player in  players:
+    for player in players:
         print(player)
 
     again = ch09_games.ask_yes_no("Хотите сыграть ещё раз? (y/n): ")
