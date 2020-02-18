@@ -10,7 +10,7 @@ class Player(object):
         self.score = score
 
     def __str__(self):
-        rep = self.name + ":\t\t" + str(self.score)
+        rep = self.name + ":\t" + str(self.score)
         return rep
 
 
