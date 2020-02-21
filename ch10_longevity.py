@@ -23,7 +23,7 @@ class Application(Frame):
         self.pw_lbl = Label(self, text = "Пароль: ")
         self.pw_lbl.grid(row = 1, column = 0, sticky = W)
 
-        # метка около поля ввода пароля
+        # текстовое поле для ввода пароля
         self.pw_ent = Entry(self)
         self.pw_ent.grid(row = 1, column = 1, sticky = W)
 
