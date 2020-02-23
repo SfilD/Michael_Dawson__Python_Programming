@@ -18,7 +18,7 @@ class Application(Frame):
         # метка-описание
         Label(self,
               text = "Укажите ваш любимый жанр кино"
-              ).grid(row = 0, column = 0, sticky = W)
+              ).grid(row = 0, column = 0, sticky = E)
 
         # метка-инструкция
         Label(self,
