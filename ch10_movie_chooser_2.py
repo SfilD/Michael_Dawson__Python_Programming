@@ -33,7 +33,7 @@ class Application(Frame):
         Radiobutton(self,
                     text = "Комедия",
                     variable = self.favorite,
-                    value = "комедия.",
+                    value = "комедия",
                     command = self.update_text
                     ).grid(row = 2, column = 0, sticky = W)
 
@@ -41,7 +41,7 @@ class Application(Frame):
         Radiobutton(self,
                     text = "Драма",
                     variable = self.favorite,
-                    value = "драма.",
+                    value = "драма",
                     command = self.update_text
                     ).grid(row = 3, column = 0, sticky = W)
 
@@ -49,12 +49,12 @@ class Application(Frame):
         Radiobutton(self,
                     text = "Кино о любви",
                     variable = self.favorite,
-                    value = "кино о любви.",
+                    value = "кино о любви",
                     command = self.update_text
                     ).grid(row = 4, column = 0, sticky = W)
 
         # текстовая область с результатами
-        self.results_txt = Text(self, width = 40, height = 5, wrap = WORD)
+        self.results_txt = Text(self, width = 40, height = 1, wrap = WORD)
         self.results_txt.grid(row = 5, column = 0, columnspan = 3)
 
     def update_text(self):

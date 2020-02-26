@@ -19,7 +19,7 @@ class Application(Frame):
         # метка с текстом-инструкцией
         Label(self,
               text = "Введите данные для создания нового рассказа"
-              ).grid(row = 0, column = 0, columnspan = 2, sticky = W)
+              ).grid(row = 0, column = 0, columnspan = 4, sticky = N)
 
         # метка и поле ввода для имени человека
         Label(self,
@@ -31,7 +31,7 @@ class Application(Frame):
 
         # метка и поле ввода для существительного
         Label(self,
-              text = "Существительное во множественном числе: "
+              text = "Существительное во мн. числе: "
               ).grid(row = 2, column = 0, sticky = W)
 
         self.noun_ent = Entry(self)
@@ -117,33 +117,35 @@ class Application(Frame):
             adjectives += "пронизывающее, "
 
         body_part = self.body_part.get()
+        print(body_part)
 
-        # создание рассказа
-        story = "Знаменитый путешественник "
-        story += person
-        story += " уже совсем отчаялся довершить дело всей своей жизни - поиск затерянного города, в котором, по легенде, обитали "
-        story += noun.title()
-        story += ". Но однажды "
-        story += noun
-        story += " и "
-        story += person + " столкнулись лицом к лицу. "
-        story += "Мощное, "
-        story += adjectives
-        story += "ни с чем не сравнимое чувство охватило душу путешественника. "
-        story += "После стольких лет поисков цель была, наконец, достигнута. "
-        story += person
-        story += " ощутил, как на его " + body_part + " скатилась слезинка. "
-        story += "И тут внезапно "
-        story += noun
-        story += " перешли в атаку и "
-        story += person + " был ими мгновенно сожран. "
-        story += "Мораль? Если задумали "
-        story += verb
-        story += ", надо делать это с осторожностью."
+        if person and noun and verb:
+            # создание рассказа
+            story = "Знаменитый путешественник "
+            story += person
+            story += " уже совсем отчаялся довершить дело всей своей жизни - поиск затерянного города, в котором, по легенде, обитали "
+            story += noun.title()
+            story += ". Но однажды "
+            story += noun
+            story += " и "
+            story += person + " столкнулись лицом к лицу. "
+            story += "Мощное, "
+            story += adjectives
+            story += "ни с чем не сравнимое чувство охватило душу путешественника. "
+            story += "После стольких лет поисков цель была, наконец, достигнута. "
+            story += person
+            story += " ощутил, как на его " + body_part + " скатилась слезинка. "
+            story += "И тут внезапно "
+            story += noun
+            story += " перешли в атаку и "
+            story += person + " был ими мгновенно сожран. "
+            story += "Мораль? Если задумали "
+            story += verb
+            story += ", надо делать это с осторожностью."
 
-        # вывод рассказа на экран
-        self.story_txt.delete(0.0, END)
-        self.story_txt.insert(0.0, story)
+            # вывод рассказа на экран
+            self.story_txt.delete(0.0, END)
+            self.story_txt.insert(0.0, story)
 
 
 # основная часть
