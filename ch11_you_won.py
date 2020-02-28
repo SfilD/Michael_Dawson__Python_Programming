@@ -13,7 +13,7 @@ won_message = games.Message(value="Победа!",
                    color=color.red,
                    x=games.screen.width/2,
                    y=games.screen.height/2,
-                   lifetime=250,
-                   after_death=games.screen.quit)
+                   lifetime=100,
+                   after_death=None)
 games.screen.add(won_message)
 games.screen.mainloop()
