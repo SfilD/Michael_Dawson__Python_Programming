@@ -3,10 +3,11 @@
 
 # Паница в пиццерии
 # Игрок должен ловить падающую пиццу, пока она не достигла земли
-from superwires import games
+from superwires import games, color
 import random
 
 games.init(screen_width=640, screen_height=480, fps=50)
+
 
 class Pan(games.Sprite):
     """Сковорода, в которую игрок может ловить падающую пиццу"""
@@ -27,6 +28,7 @@ class Pan(games.Sprite):
     def update(self):
         """Передвигает объект по горизонтали в точку с абциссой, как у указателя мыши"""
         self.x = games.mouse.x
+
         if self.left < 0:
             self.left = 0
 
@@ -83,10 +85,53 @@ class Chef(games.Sprite):
 
     def __init__(self, y=55, speed=2, odds_change=200):
         """Инициализирует объект Chef"""
-        super(Chefб self).__init__(image=Chef.image,
+        super(Chef, self).__init__(image=Chef.image,
                                    x=games.screen.width/2,
                                    y=y,
                                    dx=speed)
+
         self.odds_change = odds_change
         self.time_til_drop = 0
 
+    def update(self):
+        """Определяет, надо ли сменить направление"""
+        if self.left < 0 or self.right > games.screen.width:
+            self.dx = -self.dx
+
+        elif random.randrange(self.odds_change) == 0:
+            self.dx = -self.dx
+
+        self.check_drop()
+
+    def check_drop(self):
+        """Уменьшает интервал ожидания на единицу или сбрасывает очередную пиццу
+        и восстанавливает исходный интервал"""
+        if self.time_til_drop > 0:
+            self.time_til_drop -= 1
+
+        else:
+            new_pizza = Pizza(x=self.x)
+            games.screen.add(new_pizza)
+            # вне зависимости от скорости падения пиццы "зазор" между падающими
+            # кругами принимается равным 30% каждого из них по высоте
+            self.time_til_drop = int(new_pizza.height * 1.3 / Pizza.speed) + 1
+
+
+def main():
+    """Собственно игровой процесс"""
+    wall_image = games.load_image("wall.jpg", transparent=False)
+    games.screen.background = wall_image
+
+    the_chef = Chef()
+    games.screen.add(the_chef)
+
+    the_pan = Pan()
+    games.screen.add(the_pan)
+
+    games.mouse.is_visible = False
+
+    games.screen.event_grab = True
+    games.screen.mainloop()
+
+# начнём!
+main()
