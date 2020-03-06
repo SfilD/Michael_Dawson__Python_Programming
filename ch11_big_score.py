@@ -10,8 +10,8 @@ wall_image = games.load_image("wall.jpg", transparent=False)
 games.screen.background = wall_image
 score = games.Text(value=1756521,
                    size=60,
-                   color=color.dark_blue,
-                   x=550,
-                   y=30)
+                   color=color.black,
+                   x=games.screen.width/2,
+                   y=games.screen.height/2)
 games.screen.add(score)
 games.screen.mainloop()

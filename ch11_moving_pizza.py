@@ -14,8 +14,8 @@ pizza_image = games.load_image("pizza.bmp")
 the_pizza = games.Sprite(image=pizza_image,
                          x=games.screen.width/2,
                          y=games.screen.height/2,
-                         dx=1,
-                         dy=1)
+                         dx=4,
+                         dy=4)
 games.screen.add(the_pizza)
 
 games.screen.mainloop()
