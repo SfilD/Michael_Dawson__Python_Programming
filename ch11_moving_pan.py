@@ -24,9 +24,10 @@ def main():
                   y=games.mouse.y)
     games.screen.add(the_pan)
     games.mouse.is_visible = False
-    games.screen.event_grab = True
+    games.screen.event_grab = False
     games.screen.mainloop()
 
 
 # поехали!
-main()
+if __name__ == "__main__":
+    main()
