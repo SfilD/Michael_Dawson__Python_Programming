@@ -127,10 +127,8 @@ def main():
 
     the_pan = Pan()
     games.screen.add(the_pan)
-
     games.mouse.is_visible = False
-
-    games.screen.event_grab = True
+    games.screen.event_grab = False
     games.screen.mainloop()
 
 # начнём!

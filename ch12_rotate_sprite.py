@@ -1,15 +1,33 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Читаю с клавиатуры
-# Демонстрирует чтение клавиатурного ввода
+# Крутящийся спрайт
+# Демонстрирует вращение спрайта
 from superwires import games
 games.init(screen_width=640, screen_height=480, fps=50)
 
 class Ship(games.Sprite):
-    """Подвижный космический корабль"""
+    """Вращающийся космический корабль"""
     def update(self):
-        """Перемещает корабль определённым образом, исходя из нажатых клавиш"""
+        """Вращает корабль определённым образом, исходя из нажатых клавиш"""
+        if games.keyboard.is_pressed(games.K_d):
+            self.angle += 1
+
+        if games.keyboard.is_pressed(games.K_a):
+            self.angle -= 1
+
+        if games.keyboard.is_pressed(games.K_1):
+            self.angle = 0
+
+        if games.keyboard.is_pressed(games.K_2):
+            self.angle = 90
+
+        if games.keyboard.is_pressed(games.K_3):
+            self.angle = 180
+
+        if games.keyboard.is_pressed(games.K_4):
+            self.angle = 270
+
         if games.keyboard.is_pressed(games.K_UP):
             self.y -= 1
 
