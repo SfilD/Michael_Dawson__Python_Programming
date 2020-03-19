@@ -20,8 +20,8 @@ class Ball(games.Sprite):
         super(Ball, self).__init__(image = Ball.image,
                                    x = x,
                                    y = y,
-                                   dx = 1, #  3
-                                   dy = -1) # -3
+                                   dx = 3, #  3
+                                   dy = -3) # -3
 
     def update(self):
         """Обращает одну или обе компоненты скорости, если достигнута граница экрана"""
