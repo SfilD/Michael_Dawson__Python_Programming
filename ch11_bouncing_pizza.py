@@ -25,8 +25,8 @@ def main():
     the_pizza = Pizza(image=pizza_image,
                       x=games.screen.width/2,
                       y=games.screen.height/2,
-                      dx=15,
-                      dy=15)
+                      dx=3,
+                      dy=3)
     games.screen.add(the_pizza)
     games.screen.mainloop()
 
