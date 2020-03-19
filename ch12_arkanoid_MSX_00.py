@@ -9,13 +9,26 @@ games.init(screen_width=544, screen_height=480, fps=50)
 
 class Ball(games.Sprite):
     """Скачущий шарик"""
+    image = games.load_image("ch12_arkanoid_MSX_ball.png")
+    gap_top = 64
+    gap_left = 48
+    gap_right = 144
+    gap_bottom = 48
+
+    def __init__(self, x = 233, y = 392): # x = 233, y = 392
+        """Инициализация шарика"""
+        super(Ball, self).__init__(image = Ball.image,
+                                   x = x,
+                                   y = y,
+                                   dx = 1, #  3
+                                   dy = -1) # -3
 
     def update(self):
         """Обращает одну или обе компоненты скорости, если достигнута граница экрана"""
-        if self.right > games.screen.width or self.left < 0:
+        if self.right > games.screen.width - Ball.gap_right or self.left < 0 + Ball.gap_left:
             self.dx = -self.dx
 
-        if self.bottom > games.screen.height or self.top < 0:
+        if self.bottom > games.screen.height - Ball.gap_bottom or self.top < 0 + Ball.gap_top:
             self.dy = -self.dy
 
 
@@ -29,12 +42,7 @@ def main():
                        y = 406)  # исходное положение биты по вертикали
     games.screen.add(bat)
 
-    ball_image = games.load_image("ch12_arkanoid_MSX_ball.png")
-    the_ball = Ball(image = ball_image,
-                      x = games.screen.width/2,
-                      y = games.screen.height/2,
-                      dx = 3,
-                      dy = 3)
+    the_ball = Ball()
     games.screen.add(the_ball)
 
     games.screen.mainloop()
